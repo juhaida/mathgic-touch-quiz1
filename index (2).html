@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ketaksamaan Linear Dalam Dua Pembolehubah - Latihan SPM</title>
+<style>
+*{box-sizing:border-box} body{margin:0;background:#f4f6f8;font-family:Arial,Helvetica,sans-serif;color:#202124}
+.wrap{max-width:920px;margin:24px auto;padding:16px} .card{background:#fff;border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+h1{margin:6px 0 8px;font-size:30px} .sub{color:#667085} .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{font-weight:700;display:block;margin:12px 0 6px} select,.textin{width:100%;padding:12px;border:1px solid #cfd4dc;border-radius:10px;font-size:16px}
+.primary{border:0;background:#9b1c1c;color:#fff;padding:12px 20px;border-radius:999px;font-weight:700;cursor:pointer}
+.primary:disabled{opacity:.45} .topbar{display:flex;justify-content:space-between;gap:10px;font-weight:700;color:#475467;margin-bottom:12px}
+.progress{height:9px;background:#e8ebef;border-radius:999px;overflow:hidden;margin-bottom:20px} .progress div{height:100%;background:#9b1c1c}
+.exam-head{border-bottom:2px solid #111;padding-bottom:10px;margin-bottom:18px} .qtitle{font-weight:800;margin-bottom:8px}
+.context{line-height:1.55;margin-bottom:14px} table{width:100%;border-collapse:collapse;margin:14px 0}
+th,td{border:1px solid #333;padding:9px;text-align:center} th{background:#f5f5f5}
+.conditions{margin:14px 0 6px;padding-left:0;list-style:none} .conditions li{margin:10px 0;line-height:1.5}
+.roman{display:inline-block;width:30px;font-weight:700} .answer-title{font-weight:700;margin:18px 0 10px}
+.ansrow{display:grid;grid-template-columns:44px 1fr auto 1fr;gap:8px;align-items:center;margin:10px 0}
+.symbols{display:flex;gap:6px;flex-wrap:wrap} .symbtn{border:1px solid #98a2b3;background:#fff;padding:9px 12px;border-radius:9px;font-size:18px;cursor:pointer}
+.symbtn.active{background:#9b1c1c;color:#fff;border-color:#9b1c1c}
+.resultline{font-size:14px;margin-top:4px;min-height:18px} .ok{color:#067647;font-weight:700} .bad{color:#b42318;font-weight:700}
+.notice{padding:12px;background:#fff7ed;color:#9a3412;border-radius:10px;margin-top:14px}
+.actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px} .center{text-align:center} .score{font-size:50px;color:#9b1c1c;font-weight:800}
+@media(max-width:700px){.row{grid-template-columns:1fr} .ansrow{grid-template-columns:36px 1fr} .symbols{grid-column:2} .ansrow .rhs{grid-column:2} .card{padding:18px}}
+</style>
+</head>
+<body><div class="wrap"><div id="app" class="card"></div></div>
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbz32AYhu2Dj1Lb3tKBKPC9LF9AmJDrg77g9HUvqLTJCAcYrGwqutPyqIbNnzKIroKTl/exec";
+const students = [{"name": "SAM ZHI KHOI", "class": "EMERALD"}, {"name": "CHONG JIN TONG", "class": "DIAMOND"}, {"name": "VANNESA CHONG TING EN", "class": "EMERALD"}, {"name": "LIEW WEI XUN", "class": "SAPPHIRE"}, {"name": "SIM ZI HANG", "class": "SAPPHIRE"}, {"name": "MUHAMMAD ZEYN NIFAIL BIN ZAINAL", "class": "DIAMOND"}, {"name": "ZULAIKA BINTI SULAIMAN", "class": "DIAMOND"}, {"name": "KAMALIA DARWISYAH BINTI AZHAN", "class": "EMERALD"}, {"name": "MUHAMMAD SYAHMI ADHA BIN ZAMRI", "class": "DIAMOND"}, {"name": "MUHAMMAD ZAID BIN MUSTAPA", "class": "DIAMOND"}, {"name": "SAFIYA AUNI BINTI SAIFUL LIZAN", "class": "DIAMOND"}, {"name": "SELINA TAN QI ROU", "class": "DIAMOND"}, {"name": "WONG KA XUAN", "class": "EMERALD"}, {"name": "AQILAH SAIYEEDAH BINTI MD FABILAH", "class": "EMERALD"}, {"name": "NUR SYAMILA BINTI MOHD FARID", "class": "DIAMOND"}, {"name": "HEU CHIA NEE", "class": "EMERALD"}, {"name": "NUR ARISSYA AMEYLDA BINTI AZIZ", "class": "EMERALD"}, {"name": "CHAN WAI THONG", "class": "DIAMOND"}, {"name": "MUHAMMAD AL HAFIZ BIN MOHD SAIFULLIZAM", "class": "DIAMOND"}, {"name": "NUR AIN NADIRA BINTI SHAHRUDIN", "class": "EMERALD"}, {"name": "NUR'ALYA QISTINA BINTI MOHD HASRIME", "class": "DIAMOND"}, {"name": "PUTERI NUR ALEESYA BINTI MOHD AZHAN KWONG", "class": "DIAMOND"}, {"name": "HON THONG THONG", "class": "EMERALD"}, {"name": "AMIR WAFIEY BIN ZAINAL ABIDIN", "class": "DIAMOND"}, {"name": "MUHAMMAD DARWISY AHNA BIN MAZLAN", "class": "DIAMOND"}, {"name": "NOR AMIRA BINTI MOHAMMAD NAZIR", "class": "RUBY"}, {"name": "HUSNATUN SYIFA' BINTI MOHD HAFEZ", "class": "EMERALD"}, {"name": "SITI NURQURRATUAINIE BINTI MOHAMMAD HIRMAN", "class": "EMERALD"}, {"name": "MUHAMMAD DANIAL BIN MOHD MOKHTAR", "class": "DIAMOND"}, {"name": "MUHAMMAD RIZQ IQBAAL BIN FAIZAL", "class": "DIAMOND"}, {"name": "JUSTIN NELSON", "class": "EMERALD"}, {"name": "NUR QISTINA BALQIS BINTI AZHAR", "class": "DIAMOND"}, {"name": "RIDHUAN BIN ROSLEE", "class": "DIAMOND"}, {"name": "LIM YI XIAN", "class": "SAPPHIRE"}, {"name": "LIEW SIN JAJ", "class": "EMERALD"}, {"name": "NOR ATHIRAH BINTI MOHD IZAN", "class": "EMERALD"}, {"name": "NURUL SYAQIRAH BINTI MAZLAN", "class": "EMERALD"}, {"name": "IRIS NUR AISYAH BINTI MOHD HEFFE", "class": "EMERALD"}, {"name": "IZZI HALEEF BIN AZALI", "class": "DIAMOND"}, {"name": "AIERIL ZAQUAN BIN KUSNOS", "class": "EMERALD"}, {"name": "MUHAMMAD ADAM DANIAL BIN ABD AZIZ", "class": "EMERALD"}, {"name": "NUR DAWIRNA SAFFI BINTI ISHAK", "class": "EMERALD"}, {"name": "NUR ELISYA BINTI KHAIRUL AKMAL", "class": "EMERALD"}, {"name": "MUHAMMAD HARIS BIN JAMALUDIN", "class": "EMERALD"}, {"name": "ARMAN ARIF BIN MUHAMAD RAKBI", "class": "EMERALD"}, {"name": "MUBIN HARITH BIN MOHAMMAD MUBIN", "class": "EMERALD"}, {"name": "NG MEI XIN", "class": "SAPPHIRE"}, {"name": "AIN NATASHA BINTI MOHD ZAINAL ABIDIN", "class": "RUBY"}, {"name": "HUMAIRAH DANISHA BINTI ABDUL RAZAK", "class": "RUBY"}, {"name": "MUHAMMAD FITRI SYAH BIN MOHD NAJIB", "class": "RUBY"}, {"name": "NUR LIYANA BINTI KADERI", "class": "RUBY"}, {"name": "SITI NUR HAWA BINTI MD AZMI", "class": "RUBY"}, {"name": "AMIRA BINTI EIRHAN", "class": "EMERALD"}, {"name": "CHONG YU ZHE", "class": "SAPPHIRE"}, {"name": "HAN JO EN", "class": "RUBY"}, {"name": "SAIDATUL AKEMA BINTI MU'MININ", "class": "RUBY"}, {"name": "MUHAMMAD ZAINUL ZAKWAN BIN RAZALEE", "class": "EMERALD"}, {"name": "NURFARAH HANUM BINTI SALIM", "class": "EMERALD"}, {"name": "KHAIRUNISA BINTI ABDULLAH", "class": "EMERALD"}, {"name": "MUHAMMAD IZUDDIN BIN JANESDIN", "class": "RUBY"}, {"name": "CHONG JIA EN", "class": "SAPPHIRE"}, {"name": "CHEON ZI SHAN", "class": "RUBY"}, {"name": "MUHAMAD ALIF PUTRA BIN ZULKIFFLE", "class": "RUBY"}, {"name": "MUHAMMAD DINIE FIRDAUS BIN NORARMIZAN", "class": "RUBY"}, {"name": "SITI SOLEHA BINTI MARJUNI", "class": "RUBY"}, {"name": "MUHAMMAD ALIIF ZHORIIF BIN MOHD ABDULLAH", "class": "EMERALD"}, {"name": "MUHAMMAD ARIF HAKIMI BIN ABDULLAH", "class": "EMERALD"}, {"name": "MOHAMAD FAZRUL HAZIQ BIN MOHD AMIN", "class": "SAPPHIRE"}, {"name": "NUR HAZIRA SYAFIERA BINTI AL-HAFIZ", "class": "SAPPHIRE"}, {"name": "ADAM PUTERA BIN MOHAMAD SOLLEHAN", "class": "EMERALD"}, {"name": "MUHAMMAD THAQIF BIN AZMAN", "class": "EMERALD"}, {"name": "CHAI YU ZHE", "class": "ZIRCON"}, {"name": "CHANG JIA HENG", "class": "ZIRCON"}, {"name": "MUHAMMAD FAIQ BIN MOHD FARID", "class": "RUBY"}, {"name": "AL MAN SYAH RIZZAL BIN ABD SUKOR", "class": "SAPPHIRE"}, {"name": "AZLY FAHMI BIN AZRI SHAM", "class": "SAPPHIRE"}, {"name": "HAIQAL IKHWAN BIN NORHALIFI", "class": "SAPPHIRE"}, {"name": "NURUL AZREENA FATIHAH BINTI NORSHAM", "class": "SAPPHIRE"}, {"name": "PUTERI SHAHILA BINTI MOHD HALIM SHAH", "class": "SAPPHIRE"}, {"name": "NURDAYANA ELLYSYA BINTI ABDULLAH", "class": "RUBY"}, {"name": "AHMAD THAQIF IMRAN BIN NORAZMAN", "class": "SAPPHIRE"}, {"name": "CHAU RUI MENG", "class": "SAPPHIRE"}, {"name": "MUHAMMAD WAFIQ BIN MOHD FARID", "class": "RUBY"}, {"name": "CHOON LI XIN", "class": "SAPPHIRE"}, {"name": "LIM JOO YU", "class": "SAPPHIRE"}, {"name": "NAJIB IRFAN BIN NORDIN", "class": "SAPPHIRE"}, {"name": "WONG JIA HUI", "class": "SAPPHIRE"}, {"name": "NUR ALEEYA BINTI RAMLAN", "class": "RUBY"}, {"name": "NURSAFIYYAH BALQIS BINTI ZULKIFLY", "class": "RUBY"}, {"name": "NURUL IMAN ANISSA BINTI SHAHRIZAN", "class": "RUBY"}, {"name": "SOFIANA DEWI BINTI ABDULLAH", "class": "RUBY"}, {"name": "IRFAN ISKANDAR BIN MAT SAAT", "class": "EMERALD"}, {"name": "MUHAMMAD ADAM DANIAL BIN AZWHA", "class": "EMERALD"}, {"name": "ANIS ADHANUN SYIFAA BINTI SAMSUL BAHARI", "class": "SAPPHIRE"}, {"name": "MUHAMAD ZULHAIRIE BIN KHAIRULIZAM", "class": "SAPPHIRE"}, {"name": "MUHAMMAD ADAM DARWISY BIN MAZLIHAN", "class": "SAPPHIRE"}, {"name": "MUHAMMAD HILMI BIN HAMZAH", "class": "SAPPHIRE"}, {"name": "DERREN LAI PIN CHAO", "class": "ZIRCON"}, {"name": "SACHIN A/L RAMAMURTHY", "class": "ZIRCON"}, {"name": "TAN JIAN YI", "class": "ZIRCON"}, {"name": "MUHAMAD FARISH HAIKAL BIN OSMAN", "class": "SAPPHIRE"}, {"name": "MUHAMMAD HELMI BIN MAHADI", "class": "SAPPHIRE"}, {"name": "YONG LI LING", "class": "SAPPHIRE"}, {"name": "KHAIRUNNISA BINTI KOMARUDDIN", "class": "RUBY"}, {"name": "MOHAMAD FARIZUAN SHAHRUL BIN HAMDAN", "class": "RUBY"}, {"name": "NUR RABIAATUL ATIKA SYAHIRA BINTI MAZLAN", "class": "RUBY"}, {"name": "SITI NUR ALEYA BINTI MOHD NIZAM", "class": "RUBY"}, {"name": "MUHAMMAD RAHFIQ BIN RAHMAT", "class": "ZIRCON"}, {"name": "YAP ZHI LI", "class": "ZIRCON"}, {"name": "MUHAMMAD RIZMAN QUZAIMI BIN RAMLI", "class": "SAPPHIRE"}, {"name": "RIEFQIEE ADAMI BIN RIZAL", "class": "RUBY"}, {"name": "WONG YU GUAN", "class": "ZIRCON"}, {"name": "PUTRA ARMAND DARIUS BIN RAHMAT", "class": "SAPPHIRE"}, {"name": "CHEON ZI XUAN", "class": "ZIRCON"}, {"name": "CHANG JIA QI", "class": "SAPPHIRE"}, {"name": "MUHAMMAD DANISH RIFQI BIN MOHD NAZLI", "class": "SAPPHIRE"}, {"name": "MUHAMMAD HAZEEQ INDRA BIN AZALI", "class": "ZIRCON"}, {"name": "FATIN NASUHA BINTI ZAHARI", "class": "RUBY"}, {"name": "MUHAMMAD ALIF DANIEL BIN MUJAHID", "class": "ZIRCON"}, {"name": "CHONG CHEE CHEN", "class": "SAPPHIRE"}, {"name": "CHIN JI HAO", "class": "ZIRCON"}, {"name": "CHONG JING SHENG", "class": "ZIRCON"}, {"name": "CHONG LIH MIN", "class": "ZIRCON"}, {"name": "CHONG LIH SEEN", "class": "ZIRCON"}];
+const questions = [{"title": "Soalan 1", "context": "Encik Marzuki ialah pemilik sebuah tempat peranginan. Beliau perlu menyediakan x kek jenis P dan y kek jenis Q untuk satu majlis. Penghasilan kek melibatkan proses membakar dan menghias.", "table": [["Jenis kek", "Membakar (minit)", "Menghias (minit)"], ["P", "30", "20"], ["Q", "30", "20"]], "conditions": ["Jumlah masa membakar untuk kedua-dua jenis kek tidak lebih daripada 360 minit.", "Jumlah masa menghias untuk kedua-dua jenis kek ialah sekurang-kurangnya 240 minit.", "Nisbah bilangan kek jenis P kepada bilangan kek jenis Q yang dihasilkan tidak kurang daripada 2 : 1."], "answers": [["30x+30y", "≤", "360"], ["20x+20y", "≥", "240"], ["x", "≥", "2y"]]}, {"title": "Soalan 2", "context": "Sebuah bengkel menghasilkan x buah kerusi dan y buah meja. Setiap kerusi dan meja memerlukan masa yang berbeza untuk proses memotong dan memasang.", "table": [["Perabot", "Memotong (jam)", "Memasang (jam)"], ["Kerusi", "2", "1"], ["Meja", "4", "3"]], "conditions": ["Jumlah masa memotong tidak melebihi 40 jam.", "Jumlah masa memasang sekurang-kurangnya 24 jam.", "Bilangan kerusi yang dihasilkan tidak kurang daripada bilangan meja."], "answers": [["2x+4y", "≤", "40"], ["x+3y", "≥", "24"], ["x", "≥", "y"]]}, {"title": "Soalan 3", "context": "Sebuah kantin menyediakan x set nasi ayam dan y set mi goreng untuk satu program sekolah.", "table": [["Makanan", "Kos (RM)", "Masa penyediaan (minit)"], ["Nasi ayam", "6", "4"], ["Mi goreng", "4", "3"]], "conditions": ["Jumlah kos penyediaan tidak melebihi RM240.", "Jumlah masa penyediaan sekurang-kurangnya 120 minit.", "Bilangan set nasi ayam sekurang-kurangnya 10 set."], "answers": [["6x+4y", "≤", "240"], ["4x+3y", "≥", "120"], ["x", "≥", "10"]]}, {"title": "Soalan 4", "context": "Sebuah pusat tuisyen mendaftarkan x orang pelajar Tingkatan 4 dan y orang pelajar Tingkatan 5 untuk satu seminar.", "table": [["Kumpulan", "Bilangan tempat diperlukan", "Kit pembelajaran"], ["Tingkatan 4", "1", "1"], ["Tingkatan 5", "1", "1"]], "conditions": ["Jumlah pelajar yang hadir tidak melebihi 60 orang.", "Bilangan pelajar Tingkatan 5 sekurang-kurangnya 20 orang.", "Bilangan pelajar Tingkatan 4 tidak melebihi dua kali bilangan pelajar Tingkatan 5."], "answers": [["x+y", "≤", "60"], ["y", "≥", "20"], ["x", "≤", "2y"]]}, {"title": "Soalan 5", "context": "Sebuah ladang menanam x baris cili dan y baris tomato. Setiap baris memerlukan baja dan masa penjagaan tertentu.", "table": [["Tanaman", "Baja (kg)", "Penjagaan (jam)"], ["Cili", "3", "2"], ["Tomato", "2", "1"]], "conditions": ["Jumlah baja yang digunakan tidak melebihi 90 kg.", "Jumlah masa penjagaan sekurang-kurangnya 40 jam.", "Bilangan baris cili tidak kurang daripada bilangan baris tomato."], "answers": [["3x+2y", "≤", "90"], ["2x+y", "≥", "40"], ["x", "≥", "y"]]}, {"title": "Soalan 6", "context": "Sebuah kedai mencetak x poster saiz A3 dan y poster saiz A4. Setiap jenis poster menggunakan dakwat dan kertas pada kadar berbeza.", "table": [["Poster", "Dakwat (unit)", "Kertas (helai)"], ["A3", "4", "2"], ["A4", "2", "1"]], "conditions": ["Jumlah penggunaan dakwat tidak melebihi 120 unit.", "Jumlah penggunaan kertas sekurang-kurangnya 45 helai.", "Bilangan poster A4 sekurang-kurangnya tiga kali bilangan poster A3."], "answers": [["4x+2y", "≤", "120"], ["2x+y", "≥", "45"], ["y", "≥", "3x"]]}, {"title": "Soalan 7", "context": "Sebuah sekolah menyewa x buah bas dan y buah van untuk membawa murid ke satu program.", "table": [["Kenderaan", "Kapasiti murid", "Kos sewaan (RM)"], ["Bas", "40", "500"], ["Van", "10", "180"]], "conditions": ["Jumlah kapasiti kenderaan mestilah sekurang-kurangnya 200 orang murid.", "Jumlah kos sewaan tidak melebihi RM3000.", "Bilangan bas yang disewa sekurang-kurangnya 2 buah."], "answers": [["40x+10y", "≥", "200"], ["500x+180y", "≤", "3000"], ["x", "≥", "2"]]}, {"title": "Soalan 8", "context": "Sebuah kilang menghasilkan x kotak produk P dan y kotak produk Q. Kedua-dua produk menggunakan bahan mentah dan masa mesin.", "table": [["Produk", "Bahan mentah (kg)", "Masa mesin (minit)"], ["P", "5", "4"], ["Q", "3", "2"]], "conditions": ["Jumlah bahan mentah yang digunakan tidak melebihi 150 kg.", "Jumlah masa mesin sekurang-kurangnya 80 minit.", "Bilangan produk P tidak kurang daripada separuh bilangan produk Q."], "answers": [["5x+3y", "≤", "150"], ["4x+2y", "≥", "80"], ["x", "≥", "y/2"]]}, {"title": "Soalan 9", "context": "Sebuah kedai bunga menyediakan x jambangan mawar dan y jambangan bunga matahari untuk satu majlis.", "table": [["Jambangan", "Reben (batang)", "Masa (minit)"], ["Mawar", "6", "5"], ["Bunga matahari", "4", "3"]], "conditions": ["Jumlah reben yang digunakan tidak melebihi 120 batang.", "Jumlah masa penyediaan sekurang-kurangnya 75 minit.", "Bilangan jambangan mawar tidak melebihi bilangan jambangan bunga matahari."], "answers": [["6x+4y", "≤", "120"], ["5x+3y", "≥", "75"], ["x", "≤", "y"]]}, {"title": "Soalan 10", "context": "Sebuah kelab menjual x tiket dewasa dan y tiket pelajar untuk satu persembahan.", "table": [["Tiket", "Harga (RM)", "Kuota tempat"], ["Dewasa", "12", "1"], ["Pelajar", "8", "1"]], "conditions": ["Jumlah kutipan mestilah sekurang-kurangnya RM800.", "Jumlah tiket yang dijual tidak melebihi 90 keping.", "Bilangan tiket pelajar sekurang-kurangnya dua kali bilangan tiket dewasa."], "answers": [["12x+8y", "≥", "800"], ["x+y", "≤", "90"], ["y", "≥", "2x"]]}];
+let selectedClass="", selectedStudent="", index=0, totalScore=0, startTime=null, symbols=[null,null,null], locked=false;
+
+function classes(){return [...new Set(students.map(s=>s.class))].sort();}
+function renderLogin(){
+ document.getElementById("app").innerHTML=`
+ <div class="center"><h1>Ketaksamaan Linear Dalam Dua Pembolehubah</h1>
+ <p class="sub">Latihan E-Learning Format SPM • 10 soalan • 3 markah setiap soalan</p></div>
+ <div class="notice"><b>Arahan:</b> Baca situasi dan syarat I, II dan III. Taip ungkapan algebra pada ruang jawapan. Untuk simbol ketaksamaan, klik butang <b>&lt;, &gt;, ≤ atau ≥</b>. Setiap ketaksamaan yang betul diberi 1 markah.</div>
+ <div class="row">
+ <div><label>Kelas</label><select id="classSel" onchange="loadNames()"><option value="">-- Pilih kelas --</option>${classes().map(c=>`<option>${c}</option>`).join("")}</select></div>
+ <div><label>Nama murid</label><select id="nameSel" onchange="toggleStart()"><option value="">-- Pilih nama --</option></select></div>
+ </div>
+ <div class="center" style="margin-top:20px"><button id="startBtn" class="primary" disabled onclick="startQuiz()">Mula Latihan →</button></div>`;
+}
+function loadNames(){
+ selectedClass=document.getElementById("classSel").value;
+ const list=students.filter(s=>s.class===selectedClass).sort((a,b)=>a.name.localeCompare(b.name));
+ document.getElementById("nameSel").innerHTML='<option value="">-- Pilih nama --</option>'+list.map(s=>`<option value="${s.name.replace(/"/g,'&quot;')}">${s.name}</option>`).join("");
+ toggleStart();
+}
+function toggleStart(){
+ selectedStudent=document.getElementById("nameSel")?.value||"";
+ document.getElementById("startBtn").disabled=!(selectedClass&&selectedStudent);
+}
+function startQuiz(){index=0;totalScore=0;startTime=new Date();renderQuestion();}
+function tableHTML(t){return `<table>${t.map((r,i)=>`<tr>${r.map(c=>i===0?`<th>${c}</th>`:`<td>${c}</td>`).join("")}</tr>`).join("")}</table>`;}
+function renderQuestion(){
+ locked=false; symbols=[null,null,null];
+ const q=questions[index];
+ document.getElementById("app").innerHTML=`
+ <div class="topbar"><span>${selectedStudent} • ${selectedClass}</span><span>Markah: ${totalScore} / 30</span></div>
+ <div class="progress"><div style="width:${(index/10)*100}%"></div></div>
+ <div class="exam-head"><div class="qtitle">${index+1}.</div><div class="context">${q.context}</div>${tableHTML(q.table)}</div>
+ <div class="context"><b>Penghasilan adalah berdasarkan syarat-syarat berikut:</b></div>
+ <ul class="conditions">${q.conditions.map((c,i)=>`<li><span class="roman">${["I","II","III"][i]}</span>${c}</li>`).join("")}</ul>
+ <div class="answer-title">Tulis tiga ketaksamaan linear yang mewakili syarat-syarat di atas. <span style="float:right">[3 markah]</span></div>
+ ${[0,1,2].map(i=>answerRow(i)).join("")}
+ <div class="actions"><button class="primary" id="checkBtn" onclick="checkAnswers()">Semak Jawapan</button><button class="primary" id="nextBtn" style="display:none" onclick="nextQuestion()">${index===9?"Hantar Markah":"Soalan Seterusnya →"}</button></div>`;
+}
+function answerRow(i){
+ const roman=["I","II","III"][i];
+ return `<div class="ansrow">
+ <b>${roman}</b>
+ <input id="lhs${i}" class="textin" placeholder="Contoh: 30x + 30y">
+ <div class="symbols">
+   ${["<",">","≤","≥"].map(s=>`<button type="button" class="symbtn" data-row="${i}" data-sym="${s}" onclick="pickSymbol(${i}, '${s}', this)">${s}</button>`).join("")}
+ </div>
+ <input id="rhs${i}" class="textin rhs" placeholder="Contoh: 360">
+ </div><div id="res${i}" class="resultline"></div>`;
+}
+function pickSymbol(row,sym,btn){
+ symbols[row]=sym;
+ document.querySelectorAll(`.symbtn[data-row="${row}"]`).forEach(b=>b.classList.remove("active"));
+ btn.classList.add("active");
+}
+function norm(s){
+ return String(s||"").toLowerCase().replace(/\s+/g,"").replace(/×/g,"*").replace(/−/g,"-").replace(/÷/g,"/");
+}
+function sameExpr(a,b){
+ a=norm(a); b=norm(b);
+ return a===b;
+}
+function checkAnswers(){
+ if(locked)return;
+ const q=questions[index];
+ let gained=0;
+ for(let i=0;i<3;i++){
+   const lhs=document.getElementById("lhs"+i).value;
+   const rhs=document.getElementById("rhs"+i).value;
+   const [al,as,ar]=q.answers[i];
+   const ok=sameExpr(lhs,al) && symbols[i]===as && sameExpr(rhs,ar);
+   const el=document.getElementById("res"+i);
+   if(ok){gained++;el.className="resultline ok";el.textContent="✓ Betul";}
+   else{el.className="resultline bad";el.innerHTML=`✗ Jawapan betul: <b>${al} ${as} ${ar}</b>`;}
+ }
+ totalScore+=gained; locked=true;
+ document.querySelectorAll("input,.symbtn").forEach(x=>x.disabled=true);
+ document.getElementById("checkBtn").style.display="none";
+ document.getElementById("nextBtn").style.display="inline-block";
+}
+function nextQuestion(){index++; if(index<10)renderQuestion(); else submitResult();}
+async function submitResult(){
+ const percent=Math.round(totalScore/30*100);
+ const duration=Math.round((new Date()-startTime)/1000);
+ const payload={name:selectedStudent,class:selectedClass,score:totalScore,total:30,percent:percent,duration_seconds:duration,submitted_at:new Date().toISOString(),topic:"Ketaksamaan Linear Dalam Dua Pembolehubah"};
+ let sent=false;
+ try{
+   await fetch(WEB_APP_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(payload)});
+   sent=true;
+ }catch(e){}
+ document.getElementById("app").innerHTML=`
+ <div class="center"><h1>Latihan Selesai</h1><p class="sub">${selectedStudent} • ${selectedClass}</p>
+ <div class="score">${totalScore} / 30</div><h2>${percent}%</h2>
+ <p>${sent?"Rekod markah telah dihantar.":"Markah selesai dikira."}</p>
+ <button class="primary" onclick="renderLogin()">Kembali</button></div>`;
+}
+renderLogin();
+</script></body></html>
