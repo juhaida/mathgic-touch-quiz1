@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Latihan Johor Kertas 1 (Soalan Asal Dibina Semula)</title>
+<style>
+
+:root{--ink:#171717;--navy:#17385b;--paper:#fff;--line:#b7b7b7}
+*{box-sizing:border-box}body{margin:0;background:#e9edf1;color:var(--ink);font-family:Arial,sans-serif}
+header{background:#193b5b;color:#fff;padding:14px 20px;position:static}
+header h1{font-size:21px;margin:0;font-weight:700}header p{font-size:12px;margin:5px 0 0}
+.wrap{max-width:950px;margin:auto;padding:18px 12px}
+.panel{background:#fff;border:1px solid #d1d5db;border-radius:6px;padding:18px 20px;margin-bottom:13px;box-shadow:0 3px 12px #0000000b}
+.hidden{display:none!important}label{display:block;font-weight:700;margin-bottom:6px}
+select,input[type=text]{width:100%;padding:12px;border:1px solid #9ca3af;border-radius:6px;font-size:15px;background:white}
+button{background:#193b5b;color:white;padding:12px 16px;border:0;border-radius:6px;font-size:15px;font-weight:bold;cursor:pointer}
+button.secondary{background:#e3e9f0;color:#193b5b}button:disabled{opacity:.5;cursor:not-allowed}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}.note,.status{font-size:14px;color:#576575}.error{color:#b91c1c;font-size:14px}
+.topbar{display:flex;gap:20px;justify-content:space-between;align-items:center;flex-wrap:wrap}
+.progress{height:8px;border-radius:10px;background:#e4ebf1;overflow:hidden}.progress>div{height:100%;background:#193b5b;width:0}
+.qmeta{font-size:13px;color:#576575}.qtitle{font-size:16px;margin:5px 0;font-weight:700}
+.palette{display:flex;gap:5px;flex-wrap:wrap;margin-top:12px}.pill{background:#fff;border:1px solid #bac4ce;color:#1a334d;padding:7px 11px;border-radius:3px;font-size:12px}
+.pill.done{background:#e0f2e9;color:#14532d}.pill.active{background:#193b5b;color:#fff;border-color:#193b5b}
+/* Soalan kelihatan seperti halaman kertas peperiksaan sebenar */
+#examWrap>.panel:nth-child(2){padding:0;background:#fff}
+.exam-paper{padding:42px 7.7% 55px;min-height:560px;font-family:'Times New Roman',Times,serif;font-size:19px;line-height:1.55}
+.paper-head{display:flex;justify-content:space-between;border-bottom:1.5px solid #222;padding-bottom:9px;margin-bottom:38px;font-family:'Times New Roman',serif;font-size:15px;font-weight:bold}
+.paper-no{display:flex;align-items:flex-start;gap:14px}
+.paper-number{flex:0 0 30px;font-size:19px}
+.paper-content{min-width:0;flex:1}
+.prompt p{font-size:19px;line-height:1.5;margin:0 0 12px}.prompt .en,.en{font-style:italic;color:#262626}
+.en-inline{font-style:italic;color:#262626}
+.statement-box{border:1.3px solid #333;border-radius:0;padding:16px 18px;margin:18px 2px 20px;background:white}
+.dataset-box{border:2px solid #222;font-size:21px;margin:18px 0;padding:6px 15px;display:inline-block;letter-spacing:1px}
+.data-table{border-collapse:collapse;width:100%;max-width:650px;margin:20px auto 27px;background:white;font-family:'Times New Roman',serif}
+.data-table th,.data-table td{border:1px solid #555;text-align:center;padding:10px;font-size:17px}.data-table th:first-child{text-align:left;min-width:155px}
+.data-table caption{caption-side:bottom;padding-top:7px;font-size:16px;font-weight:normal;font-style:italic}
+/* Pilihan A/B/C/D dua lajur menyerupai susunan SPM, bukan kad */
+#options{margin:26px 0 0 44px}
+.option{display:flex;gap:21px;align-items:baseline;margin:9px 0;padding:3px 4px;border:none!important;border-radius:0;background:white!important;font-weight:normal;cursor:pointer}
+.option input{width:18px;height:18px;flex:0 0 18px;margin:0 1px 0 0;accent-color:#193b5b}
+.option-letter{display:block;min-width:21px;width:21px;height:auto;background:none;color:#171717;font-family:'Times New Roman',serif;font-weight:700;font-size:19px}
+.option-body{font-family:'Times New Roman',serif;font-size:19px;line-height:1.5}
+.paper-foot{border-top:1px solid #444;padding-top:8px;margin-top:56px;display:flex;justify-content:space-between;font-family:'Times New Roman',serif;font-size:13px;font-weight:bold}
+.score{font-size:35px;font-weight:bold;color:#193b5b}.review-table{border-collapse:collapse;width:100%}.review-table td,.review-table th{border:1px solid #cbd5e1;padding:8px;text-align:left}.review-table th{background:#f3f6fa}.badge-good{color:green;font-weight:bold}.badge-bad{color:#b91c1c;font-weight:bold}
+footer{text-align:center;font-size:12px;color:#576575;padding:16px}
+@media(max-width:620px){.wrap{padding:8px}.panel{padding:14px 12px}.exam-paper{padding:28px 17px 34px;min-height:470px}.paper-no{gap:7px}.paper-number{flex-basis:24px}.prompt p{font-size:17px}.option-body,.option-letter{font-size:17px}#options{margin-left:16px}.option{gap:9px}.statement-box{padding:10px}.data-table th,.data-table td{font-size:13px;padding:6px 4px}.data-table th:first-child{min-width:100px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Latihan Johor Kertas 1</h1>
+  <p>Soalan asal dipilih daripada Johor Set 1 • Tingkatan 1 hingga 4 sahaja • Versi dibina semula dengan susun atur kemas</p>
+</header>
+<div class="wrap">
+  <section class="panel" id="identityPanel">
+    <h2>Maklumat pelajar</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+      <div>
+        <label for="kelas">Kelas</label>
+        <select id="kelas"><option value="">-- Pilih kelas --</option></select>
+      </div>
+      <div>
+        <label for="student">Nama pelajar</label>
+        <select id="student"><option value="">-- Pilih nama --</option></select>
+      </div>
+    </div>
+    <div id="manualWrap" class="hidden" style="margin-top:12px">
+      <label for="manualName">Nama penuh (jika tiada dalam senarai)</label>
+      <input type="text" id="manualName" placeholder="Taip nama penuh pelajar">
+    </div>
+    <p class="note">Jika nama tiada dalam senarai, pilih pilihan terakhir dan taip sendiri nama pelajar.</p>
+    <p id="identityError" class="error"></p>
+    <div class="actions"><button id="startBtn" type="button">Mula latihan</button></div>
+  </section>
+
+  <main id="examWrap" class="hidden">
+    <section class="panel">
+      <div class="topbar">
+        <div>
+          <div class="qmeta" id="studentMeta"></div>
+          <div class="qtitle" id="qtitle"></div>
+        </div>
+        <div style="min-width:180px;flex:1;max-width:280px">
+          <div class="note" id="progressText">0 / 16 dijawab</div>
+          <div class="progress"><div id="progressFill"></div></div>
+        </div>
+      </div>
+      <div class="palette" id="palette"></div>
+    </section>
+    <section class="panel">
+      <div class="exam-paper"><div class="paper-head"><span>1449/1</span><span>MATEMATIK — KERTAS 1</span><span>JOHOR SET 1</span></div><div class="paper-no"><span class="paper-number" id="paperNumber"></span><div class="paper-content"><div class="prompt" id="prompt"></div></div></div><div id="options"></div><div class="paper-foot"><span>1449/1</span><span>[Lihat sebelah]</span></div></div>
+    </section>
+    <section class="panel">
+      <div class="actions">
+        <button class="secondary" id="prevBtn" type="button">Sebelum</button>
+        <button class="secondary" id="nextBtn" type="button">Seterusnya</button>
+        <button id="submitBtn" type="button">Hantar jawapan dan semak markah</button>
+      </div>
+      <p class="status" id="examStatus"></p>
+    </section>
+  </main>
+
+  <section class="panel hidden" id="resultPanel">
+    <h2>Keputusan latihan</h2>
+    <div class="score" id="scoreText"></div>
+    <p id="resultInfo"></p>
+    <p id="saveStatus" class="status"></p>
+    <h3>Semakan jawapan</h3>
+    <div style="overflow:auto"><table class="review-table" id="reviewTable"></table></div>
+    <div class="actions" style="margin-top:14px">
+      <button class="secondary" id="retryBtn" type="button">Buat semula</button>
+    </div>
+  </section>
+</div>
+<footer>URL Apps Script telah dimasukkan • Markah akan dihantar ke Google Sheet yang sama</footer>
+<script>
+const SCRIPT_URL='https://script.google.com/macros/s/AKfycbz_sipazq4dBnAivzZpDM5m9a9RydhAo8Wbb7-NtJ0F_psCqhZ304tcfTJFFXCm-kId/exec';
+const VERSION='JOHOR-SET1-K1-KSSM-T1-T4-V1';
+const STUDENTS={"4 DIAMOND": ["ADAM RIZQIE BIN MOHD IKHRAM", "AISYAH AZZAHIRA BINTI ZAINOL", "ALYA UMAIRAH BINTI MOHAMAD ZAINUDIN", "ALYAA UMAIRAH BINTI SHAHRUDDIN", "AMMAR FARHAN BIN MOHD FARUZE", "ANIQ NAJWAN BIN HARNIE SHA FARDLY", "ARISSA NABIHAH BINTI RASID", "CHAN WAI LING", "HAFIZUL AQIF BIN MISMAN", "LEE WEN HUI", "MUHAMMAD AMMAR FAKHRY BIN RUDIFIFTY", "MUHAMMAD ASRI BIN ABDULLAH", "MUHAMMAD DANISH AIMAN BIN MOHD NOOR RAMDAN", "MUHAMMAD SYAFIQ BIN HAMIDUN", "NUR AFRINA BINTI SUFFIAN", "NUR AIMI AFIQA BINTI YAZID", "NUR BALQIS QALILAH BINTI REDZUAN", "NUR ELIEYANA BINTI ABDULLAH", "NUR UMMI ZUHAIRA BINTI IBRAHIM", "NURAINI BINTI KAMARUDIN", "NURALYAA NAJWA BINTI ZAINI", "NURASNI AFRINA BINTI KAMARULNIZAM", "NURIS ERISYA AMANI BINTI MOHD FADLI", "PUTRI NUR AIN BINTI HASNI", "SIM XIN YING", "SYAZA ZULAIKHA BINTI AZMAN", "ZARITH SOFEA BINTI JOHARI"], "4 EMERALD": ["AFIF HAZIQ MUHAMMAD BIN AZHAR", "AKID DANISH BIN MOHAMAD AKMAL", "AKIF UQAIL BIN KASIM", "CHONG LIN SENG", "CHONG YUN XUAN", "EAROSHNAN A/L KRISHNAN", "FATIN ALYAA QALESYA BINTI MOHD ZAIN", "LIEW SHAN MEI", "LIEW SHIUAN TORANG", "LIM ZHE YU", "LUQMAN HAKIM BIN RONIZAM", "MATHUSHVINAA A/P N.SHANMUGAM", "MOHAMAD AIRIEL EZDANY BIN MOHD HAIRULNIZAM", "MOHAMAD ALIF AKMAL BIN ZAID", "MUHAMAD SHAMSUL ANWAR BIN SAIPOLAGRIN", "MUHAMMAD ALIF NAJMI BIN JAMALI", "MUHAMMAD DARWISY LUTFAN BIN MOHD NIZAM", "MUHAMMAD FHAREAZ SHARIZAL BIN MOHD ANIZAMRIZAL", "MUHAMMAD HAZIM BIN MOHD JAAFAR", "MUHAMMAD KHALIFF BIN MOHD KHAIR", "NG WEN XIN", "NIYAZ MAHMUD BIN MOHD NOR KHAIRIL", "NOR QAISARAH ARMANI BINTI SAFARUDDIN", "NUR MARISSA QAIREEN BINTI MISMAN", "NUR SYARAH AYURA ALDI BINTI ABDULLAH", "NUR UMAIRAH BINTI MAZENI", "NURSYUHADAH BINTI ABDUL QAYYUM", "PUTERI NUR QAISYARAH BINTI ZULKIFLI", "SITI NUR NAJEEHA BINTI SAIMI"], "4 RUBY": ["ADLIA ZULAIKA BINTI MOHAMAD ALWI", "GAN PEILING", "IMRAN ZAWAWI BIN KAMARUDIN", "JUSTINA PANG XUE WEN", "LEONG YU JIE", "MINNIE CHONG MIN NEE", "MISS RATTANA KHEMPET", "MOHAMAD HARITH REZKY BIN ABDULLAH", "MUHAMAD IRFAN IQBAL BIN ABDOL SAMAD", "MUHAMAD RAIF BIN ABD RAZAK", "MUHAMMAD ADIB MUQRI BIN ZULKARNAEN", "MUHAMMAD AMIRUL ADHA BIN AMIRUDDIN", "MUHAMMAD AMMAR ASYRAF BIN KAMARUDEN", "MUHAMMAD ILMAN RIZQI BIN ABU", "MUHAMMAD IRHAN JALAL BIN JAWAHARJALAL", "MUHAMMAD YUSUFF BIN KAMARUL ZAMAN", "NUR HUMAIRA BINTI KHAMIS", "NUR UMAIRAH DAMIA BINTI ABDULLAH", "NUR UMMAIRAH BINTI NOORHALIM", "NURUL AINATUL JANNAH BINTI NORMAN", "QALESYA RAMADHANI BINTI ABDULLAH", "SIM CHEN ONG", "SITI HAWA BINTI ABDUL KADIR"], "4 SAPPHIRE": ["AIMAN AZRIQ BIN YUSMAN", "CHIN LER XIN", "CHONG JIA HENG", "CHONG MIN XUN", "CHU ZE JIA", "JENNIFER NG XIAN QIN", "LEW YU HE", "LIM JUN LOONG", "LIONG XIN CHENG", "MUHAMAD AQIL HADIF BIN MOHD HAIRI", "MUHAMMAD ADAM HARRIS BIN MAHATHIR", "MUHAMMAD AMIENUL BIN AJIB", "MUHAMMAD HAIZAT HIZUAN BIN MOHAMAD HAFFNY", "MUHAMMAD IRFAN BIN ZULKIFLI", "MUHAMMAD NUR SYAHQIF IQBAL BIN ABDULLAH", "MUHAMMAD RAIYAN IMAN BIN NAZARUDDIN", "NUR AFFAN BIN ABD ALIM", "NUR BALQIS ADRIANA BINTI ABDULLAH", "PANG JUNN HENN", "WONG JING HUA", "YONG ZI YI"]};
+const QUESTIONS=[{"original": 1, "answer": "A", "prompt": "<p>Diberi ketinggian Menara Kuala Lumpur adalah 421 meter. Tukarkan 421<sub>10</sub> kepada asas tujuh.</p><p class=\"en\">Given that the height of Kuala Lumpur Tower is 421 metre. Convert 421<sub>10</sub> to base seven.</p>", "options": ["1141<sub>7</sub>", "1411<sub>7</sub>", "1114<sub>7</sub>", "4111<sub>7</sub>"]}, {"original": 2, "answer": "D", "prompt": "<p>Hitung nilai bagi 452<sub>6</sub> + 135<sub>6</sub>.</p><p class=\"en\">Calculate the value of 452<sub>6</sub> + 135<sub>6</sub>.</p>", "options": ["587<sub>6</sub>", "600<sub>6</sub>", "1301<sub>6</sub>", "1031<sub>6</sub>"]}, {"original": 3, "answer": "D", "prompt": "<p>Sebuah syarikat hiburan telah menganjurkan sebuah festival muzik selama lima hari. Purata pengunjung yang hadir adalah 500 orang dewasa dan 300 orang kanak-kanak. Jika setiap pengunjung yang hadir dikenakan bayaran masuk sebanyak RM5.00 untuk dewasa dan RM2.00 untuk kanak-kanak, hitung jumlah keuntungan hasil daripada jualan tiket masuk untuk festival muzik tersebut dan nyatakan dalam bentuk piawai.</p><p class=\"en\">An entertainment company has organized a five-day music festival. The average visitor in attendance was 500 adults and 300 children. If each visitor present is charged an entrance fee of RM5.00 for adults and RM2.00 for children, calculate the total profit from the sale of entrance tickets for the music festival and state in standard form.</p>", "options": ["2.5 × 10<sup>3</sup>", "6.0 × 10<sup>2</sup>", "3.1 × 10<sup>3</sup>", "1.55 × 10<sup>4</sup>"]}, {"original": 8, "answer": "D", "prompt": "<p>Diberi bahawa P = {faktor bagi 16} dan Q = {nombor perdana yang kurang daripada 15}. Senaraikan semua unsur bagi P ∪ Q.</p><p class=\"en\">Given that P = {factors of 16} and Q = {prime numbers less than 15}. List all the elements of P ∪ Q.</p>", "options": ["{ 1, 2, 3, 4, 8, 16 }", "{ 2, 3, 5, 7, 8, 11,18 }", "{ 2, 3, 4, 5, 7, 11, 13, 16 }", "{ 1, 2, 3, 4, 5, 7, 8, 11, 13, 16 }"]}, {"original": 11, "answer": "D", "prompt": "<p>Puan Salmiza menyimpan wang sebanyak RM5 800 di Bank Teratai dengan kadar faedah 3% setahun. Berapakah faedah yang diperolehi oleh Puan Salmiza selepas setahun?</p><p class=\"en\">Mrs. Salmiza keeps RM5 800 in Bank Teratai with an interest rate of 3% per annum. How much benefit does Mrs. Salmiza get after one year?</p>", "options": ["RM 580", "RM 348", "RM 180", "RM 174"]}, {"original": 12, "answer": "A", "prompt": "<p>Encik Fauzi menerima penyata kad kredit bagi bulan Ogos 2020 dari Bank Bahagia. Penyata menunjukkan baki tertunggak ialah sebanyak RM3 700. Berapakah bayaran minimum yang harus dibayar oleh Encik Fauzi?</p><p class=\"en\">Mr Fauzi received a credit card statement for August 2020 from Bank Bahagia. The statement shows that the outstanding balance is RM3 700. What is the minimum payment to be paid by Mr. Fauzi?</p>", "options": ["RM 185", "RM 220.15", "RM 222", "RM 370"]}, {"original": 18, "answer": "B", "prompt": "<p>Hitung nilai √156.7 dengan menggunakan kalkulator dan berikan jawapan anda betul kepada 3 angka perpuluhan.</p><p class=\"en\">Calculate the value of √156.7 by using a calculator and give your answer correct to 3 decimal places.</p>", "options": ["12.517", "12.518", "12.52", "12.521"]}, {"original": 23, "answer": "C", "prompt": "<p>Ringkaskan / <span class=\"en-inline\">Simplify</span> &nbsp; 20 a<sup>3</sup> b<sup>5</sup> ÷ 4 a b<sup>4</sup></p>", "options": ["5 a<sup>3</sup> b", "5 a<sup>2</sup> b<sup>2</sup>", "5 a<sup>2</sup> b", "5 a b<sup>2</sup>"]}, {"original": 24, "answer": "A", "prompt": "<p>Bentukkan persamaan linear dalam satu pemboleh ubah bagi pernyataan berikut:</p><p class=\"en\">Construct a linear equation in one variable for the following statement:</p><div class=\"statement-box\"><p>Siti membeli lima batang pen dengan harga <em>y</em> sen sebatang dan sebuah buku berharga RM5. Jumlah wang yang dibayarnya ialah RM 8</p><p class=\"en\">Siti bought five pens for <em>y</em> cent each and a book for RM 5. The amount she paid was RM 8.</p></div>", "options": ["5y + 500 = 800", "5y + 5 = 8", "5y + 800 = 500", "5y – 8 = 5"]}, {"original": 25, "answer": "A", "prompt": "<p>Pengurus sebuah gedung pakaian mempunyai beberapa sasaran bagi pekerja jualannya.</p><p class=\"en\">The manager of a clothing store has several targets for his sales employees.</p><div class=\"statement-box\"><p>Pada bulan Mac jumlah masa, <em>t</em> yang digunakan untuk mengira inventori Gedung selebih-lebihnya 6 jam.</p><p class=\"en\">In March the total time, <em>t</em> used to calculate the store inventory was a maximum of 6 hours.</p><p>Jumlah jualan minimum sebulan dalam RM, <em>x</em>, ialah 19 000.</p><p class=\"en\">The minimum sales volume per month in RM, <em>x</em>, is 19 000.</p></div><p>Bina satu ketaksamaan linear berdasarkan situasi tersebut.</p><p class=\"en\">Construct a linear inequality based on the situation.</p>", "options": ["t ≤ 6 , &nbsp; x ≥ 19 000", "t ≥ 6 , &nbsp; x ≤ 19 000", "t &gt; 6 , &nbsp; x &lt; 19 000", "t &gt; 6 , &nbsp; x &gt; 19 000"]}, {"original": 27, "answer": "A", "prompt": "<p>Tentukan pintasan - x dalam suatu garis lurus yang melalui titik Q (0, - 6) dengan kecerunan -2.</p><p class=\"en\">Determine the x - intercept of a straight line passing through the point Q (0, - 6) with a gradient -2.</p>", "options": ["- 3", "- 2", "3", "4"]}, {"original": 29, "answer": "C", "prompt": "<p>Tentukan median bagi set data berikut.</p><p class=\"en\">Determine the median for the following data set.</p><div class=\"dataset-box\">2, 3, 5, 4, 6, 8, 9, 1, 2</div>", "options": ["2", "3", "4", "6"]}, {"original": 31, "answer": "C", "prompt": "<p>Jadual 1 di bawah menunjukkan bilangan ketidakhadiran 20 orang murid pada bulan September tahun 2021. Hitung varians bagi bilangan hari murid tidak hadir.</p><p class=\"en\">Table 1 below shows the number of absentees of 20 students in the September of 2021. Calculate the variance for the number of days students were absent.</p><table class=\"data-table\"><caption>Jadual 1 / Table 1</caption><tr><th>Bilangan hari /<br>Number of day</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>Bilangan murid /<br>Number of students</th><td>3</td><td>5</td><td>8</td><td>2</td><td>2</td></tr></table>", "options": ["2.75", "1.13", "1.29", "1.75"]}, {"original": 32, "answer": "B", "prompt": "<p>Antara berikut yang manakah bukan satu kompenan penting dalam matlamat kewangan SMART?</p><p class=\"en\">Which of the following is not a key component in the SMART financial goals?</p>", "options": ["Bersifat realistic<br><span class=\"en\">Realistic</span>", "Belanjawan yang ketat<br><span class=\"en\">Tight budget</span>", "Boleh di capai<br><span class=\"en\">Attainable</span>", "Boleh diukur<br><span class=\"en\">Measurable</span>"]}, {"original": 33, "answer": "A", "prompt": "<p>Encik Hadif menerima pendapatan aktif sebanyak RM4 000, dan pendapatan pasif sebanyak RM1 000 dalam sebulan. Encik Hadif juga mempunyai perbelanjaan tetap sebanyak RM1850 dan perbelanjaan tidak tetap sebanyak RM750 sebulan. Hitung aliran tunai bulanan Encik Hadif.</p><p class=\"en\">Mr. Hadif receives an active income of RM4 000, and a passive income of RM1 000 in a month. Mr. Hadif also has a fixed expense of RM1 850 and a non -fixed expense of RM750 per month. Calculate Mr. Hadif's monthly cash flow.</p>", "options": ["RM 2400", "– RM 2400", "RM 400", "– RM 400"]}, {"original": 36, "answer": "B", "prompt": "<p>Sebiji guli diambil dari sebuah bekas yang mengandungi 30 biji guli merah dan 20 biji guli biru.Hitung kebarangkalian guli berwarna merah diambil.</p><p class=\"en\">A marble is taken from a container containing 30 red marbles and 20 blue marbles. Calculate the probability that red marbles are taken.</p>", "options": ["1/2", "3/5", "2/3", "2/5"]}];
+const LETTERS=['A','B','C','D'];
+const $=id=>document.getElementById(id);
+let current=0, answers={}, identity=null, attemptId='', submitted=false;
+function makeAttemptId(){ return (typeof crypto!=='undefined' && crypto.randomUUID) ? crypto.randomUUID() : 'ATT-'+Date.now()+'-'+Math.random().toString(36).slice(2); }
+function fillClasses(){ const kelas=$('kelas'); Object.keys(STUDENTS).forEach(k=>{ const op=document.createElement('option'); op.value=k; op.textContent=k; kelas.appendChild(op); }); }
+function fillStudents(){ const cls=$('kelas').value, sel=$('student'); sel.innerHTML='<option value="">-- Pilih nama --</option>'; $('manualWrap').classList.add('hidden'); $('manualName').value=''; if(!cls) return; STUDENTS[cls].forEach(name=>{ const op=document.createElement('option'); op.value=name; op.textContent=name; sel.appendChild(op); }); const other=document.createElement('option'); other.value='__new__'; other.textContent='Nama saya tiada dalam senarai'; sel.appendChild(other); }
+$('kelas').addEventListener('change', fillStudents);
+$('student').addEventListener('change', ()=>{ $('manualWrap').classList.toggle('hidden', $('student').value!=='__new__'); });
+function updatePalette(){ $('palette').innerHTML=QUESTIONS.map((q,i)=>{ const done=answers[i]?' done':''; const active=i===current?' active':''; return `<button type="button" class="pill${done}${active}" onclick="goToQuestion(${i})">${i+1}</button>`; }).join(''); }
+function updateProgress(){ const count=Object.keys(answers).length; $('progressText').textContent=`${count} / ${QUESTIONS.length} dijawab`; $('progressFill').style.width=(count/QUESTIONS.length*100)+'%'; updatePalette(); }
+function renderQuestion(){ const q=QUESTIONS[current]; $('studentMeta').textContent=`${identity.name} • ${identity.kelas}`; $('qtitle').textContent=`Soalan ${current+1} daripada ${QUESTIONS.length} (Soalan asal no. ${q.original})`; $('prompt').innerHTML=q.prompt; $('paperNumber').textContent=q.original+'.'; $('options').innerHTML=q.options.map((opt,idx)=>`<label class="option"><input type="radio" name="answer" value="${LETTERS[idx]}" ${answers[current]===LETTERS[idx]?'checked':''}><span class="option-letter">${LETTERS[idx]}</span><span class="option-body">${opt}</span></label>`).join(''); document.querySelectorAll('input[name="answer"]').forEach(el=>el.addEventListener('change',e=>{ answers[current]=e.target.value; updateProgress(); })); $('prevBtn').disabled=current===0; $('nextBtn').disabled=current===QUESTIONS.length-1; $('examStatus').textContent=''; }
+function goToQuestion(i){ current=i; renderQuestion(); window.scrollTo({top:0,behavior:'smooth'}); }
+$('prevBtn').onclick=()=>{ if(current>0) goToQuestion(current-1); };
+$('nextBtn').onclick=()=>{ if(current<QUESTIONS.length-1) goToQuestion(current+1); };
+$('startBtn').onclick=()=>{ const kelas=$('kelas').value; let name=$('student').value==='__new__' ? $('manualName').value.trim().toUpperCase() : $('student').value.trim().toUpperCase(); if(!kelas||!name){ $('identityError').textContent='Sila pilih kelas dan nama pelajar dahulu.'; return; } if(name.length<3){ $('identityError').textContent='Nama pelajar tidak lengkap.'; return; } $('identityError').textContent=''; identity={kelas,nama:name,name}; attemptId=makeAttemptId(); answers={}; current=0; submitted=false; $('identityPanel').classList.add('hidden'); $('examWrap').classList.remove('hidden'); $('resultPanel').classList.add('hidden'); $('submitBtn').disabled=false; updateProgress(); renderQuestion(); };
+$('submitBtn').onclick=async()=>{ if(submitted) return; if(Object.keys(answers).length<QUESTIONS.length){ $('examStatus').textContent='Masih ada soalan yang belum dijawab. Sila lengkapkan semua soalan.'; return; } if(!confirm('Hantar jawapan untuk disemak?')) return; submitted=true; $('submitBtn').disabled=true; const score=QUESTIONS.reduce((s,q,i)=>s + (answers[i]===q.answer?1:0), 0); const percent=Math.round(score/QUESTIONS.length*10000)/100; $('examWrap').classList.add('hidden'); $('resultPanel').classList.remove('hidden'); $('scoreText').textContent=`${score} / ${QUESTIONS.length} (${percent}%)`; $('resultInfo').textContent=`${identity.name} • ${identity.kelas}`; $('reviewTable').innerHTML='<tr><th>Bil</th><th>No. asal</th><th>Jawapan pelajar</th><th>Jawapan betul</th><th>Status</th></tr>' + QUESTIONS.map((q,i)=>{ const ok=answers[i]===q.answer; return `<tr><td>${i+1}</td><td>${q.original}</td><td>${answers[i]}</td><td>${q.answer}</td><td class="${ok?'badge-good':'badge-bad'}">${ok?'Betul':'Salah'}</td></tr>`; }).join(''); const payload={attemptId,nama:identity.name,kelas:identity.kelas,jawapan:Object.fromEntries(QUESTIONS.map((q,i)=>[String(i+1),answers[i]])),versi:VERSION}; try{ $('saveStatus').textContent='Sedang menyimpan markah ke Google Sheet...'; const fd=new URLSearchParams(); fd.set('payload', JSON.stringify(payload)); const res=await fetch(SCRIPT_URL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:fd.toString()}); const data=await res.json(); $('saveStatus').textContent=(data&&data.ok)?'Markah berjaya disimpan dan digabungkan dalam Google Sheet.':'Markah dipaparkan tetapi rekod belum berjaya disimpan.'; }catch(err){ $('saveStatus').textContent='Markah dipaparkan tetapi terdapat masalah semasa menyimpan ke Google Sheet.'; } };
+$('retryBtn').onclick=()=>location.reload();
+fillClasses();
+</script>
+</body>
+</html>
